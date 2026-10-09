@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RaceWinners;
@@ -39,7 +41,51 @@ public class Program
 
             Console.WriteLine($"{group.Name} - [{ranks}]");
         }
+        int g1 = 0;
+        int g2 = 0;
+        int g3 = 0;
+        int g4 = 0;
+        int i = 0;
+        foreach(var group in groups)
+        {
+            int average = 0; 
+            int count = 0;
+            i++;
+            foreach (var rank in group.Ranks)
+            {
+                average += rank;
+                count++;
+            }
+            if(i == 1)
+            {
+                g1 = average / count;
+            }
+            else if (i == 2)
+            {
+                g2 = average / count;
+            }
+            else if (i == 3)
+            {
+                g3 = average / count;
+            }
+            else
+            {
+                g4 = average / count;
+            }
+            var scores = new Dictionary<string, int>
+            {
+                {"Class A",g1},
+                {"Class B",g2},
+                {"Class C",g3},
+                {"Class D",g4}
+            };
+            var ranked = scores.OrderBy(score => score.Value).ToList();
+            for(int place = 0; place < ranked.Count; place++)
+            {
+                Console.WriteLine($"{ranked[place].Key} is {place + 1}st place!");
+            }
 
+        }
         // YOUR TURN: Rank each group from first to last place.
         // Decide what "fair" means before you start writing code!
     }
