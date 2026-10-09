@@ -46,9 +46,9 @@ public class Program
         int g3 = 0;
         int g4 = 0;
         int i = 0;
-        foreach(var group in groups)
+        foreach (var group in groups)
         {
-            int average = 0; 
+            int average = 0;
             int count = 0;
             i++;
             foreach (var rank in group.Ranks)
@@ -56,7 +56,7 @@ public class Program
                 average += rank;
                 count++;
             }
-            if(i == 1)
+            if (i == 1)
             {
                 g1 = average / count;
             }
@@ -72,19 +72,18 @@ public class Program
             {
                 g4 = average / count;
             }
-            var scores = new Dictionary<string, int>
-            {
-                {"Class A",g1},
-                {"Class B",g2},
-                {"Class C",g3},
-                {"Class D",g4}
-            };
-            var ranked = scores.OrderBy(score => score.Value).ToList();
-            for(int place = 0; place < ranked.Count; place++)
-            {
-                Console.WriteLine($"{ranked[place].Key} is {place + 1}st place!");
-            }
-
+        }
+        var scores = new Dictionary<string, int>
+        {
+            {"Class A",g1},
+            {"Class B",g2},
+            {"Class C",g3},
+            {"Class D",g4}
+        };
+        var ranked = scores.OrderBy(score => score.Value).ToList();
+        for(int place = 0; place < ranked.Count; place++)
+        {
+            Console.WriteLine($"{ranked[place].Key} is {place + 1}st place!");
         }
         // YOUR TURN: Rank each group from first to last place.
         // Decide what "fair" means before you start writing code!
